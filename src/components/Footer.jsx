@@ -147,7 +147,7 @@ export default function Footer() {
           minWidth: 180,
           justifySelf: "end"
         }}>
-          © 2025 TEDxGADVASU. All rights reserved.
+          © 2025 TEDxGNA. All rights reserved.
         </div>
       </div>
       <style>{`
