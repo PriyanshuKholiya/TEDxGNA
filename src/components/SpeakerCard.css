@@ -1,0 +1,137 @@
+/*
+  Fresh, self-contained styles for SpeakerCard.
+  Prefix all rules with .speaker-card .sc-* to avoid global collisions.
+*/
+
+.speaker-card {
+  width: 340px;
+  height: 460px;
+  perspective: 1200px;
+  margin-bottom: 2rem; /* white space below each card */
+}
+
+.speaker-card .sc-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(10,10,14,0.9), rgba(18,18,22,0.95));
+  color: #fff;
+  border: 1px solid rgba(0,240,255,0.04);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  overflow: hidden;
+}
+.speaker-card .sc-card:hover { box-shadow: 0 14px 48px rgba(0,240,255,0.06), 0 6px 30px rgba(255,0,208,0.04); transform: translateY(-6px) scale(1.02); }
+
+/* Flip engine */
+.speaker-card .sc-inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+}
+.speaker-card.flipped .sc-inner { transform: rotateY(180deg); }
+
+.speaker-card .sc-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+}
+
+.speaker-card .sc-front { background: #111; }
+
+.speaker-card .sc-image {
+  flex: 0 0 300px;
+  overflow: hidden;
+}
+.speaker-card .sc-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.speaker-card .sc-info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1rem 1rem 1rem;
+  background: rgba(24,24,24,0.92);
+}
+.speaker-card .sc-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.speaker-card .sc-title { color: var(--neon-pink); font-weight: 700; font-size: 1.02rem; text-shadow: 0 6px 24px rgba(255,63,166,0.06); }
+
+.speaker-card .sc-back {
+  background: #181818;
+  transform: rotateY(180deg);
+}
+.speaker-card .sc-back-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.2rem 1rem 2.4rem 1rem; /* leave space for flip btn */
+}
+.speaker-card .sc-desc {
+  margin-top: 0.2rem;
+  color: #e8e8e8;
+  line-height: 1.6;
+  overflow-y: auto; /* critical: never overflow out of the card */
+  overflow-x: hidden;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Flip button */
+.speaker-card .sc-flip-btn {
+  position: absolute;
+  bottom: 10px; /* move away from title/name to avoid overlap */
+  right: 10px;
+  z-index: 5;
+  background: #e62b1e;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+.speaker-card .sc-flip-btn:hover { background: #b71c13; }
+
+/* Neon name bar */
+.speaker-card .sc-name {
+  position: relative;
+}
+.speaker-card .sc-name::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(0,240,255,0.85), rgba(255,0,208,0.75));
+  filter: blur(6px);
+  opacity: 0.7;
+}
+
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .speaker-card { width: 300px; height: 430px; }
+  .speaker-card .sc-image { flex-basis: 260px; }
+}
+@media (max-width: 800px) {
+  .speaker-card { width: 260px; height: 380px; max-width: 90vw; }
+  .speaker-card .sc-image { flex-basis: 200px; }
+}
+@media (max-width: 500px) {
+  .speaker-card { width: 98vw; height: 360px; border-radius: 12px; }
+  .speaker-card .sc-card { border-radius: 12px; }
+}

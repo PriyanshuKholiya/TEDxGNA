@@ -1,0 +1,37 @@
+.with-grid-backdrop {
+  position: relative;
+  min-height: 100vh; /* or 100% if this is nested inside another full-height layout */
+  width: 100%;
+  background: transparent;
+  z-index: 0;
+} 
+
+/* ensure all direct content sits above the grid */
+.with-grid-backdrop > *:not(.grid-backdrop) {
+  position: relative;
+  z-index: 2;
+}
+
+/* white cards inside the wrapper must be fully opaque and stacked above everything */
+.with-grid-backdrop .white-card {
+  position: relative;
+  z-index: 3;
+  background: #ffffff !important;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+/* Allow transparent background for rules section to show grid */
+.with-grid-backdrop .white-card.rules-section {
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Allow transparent background for nomination section to show grid */
+.with-grid-backdrop .white-card.nominate-section {
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Allow transparent background for about section to show grid */
+.with-grid-backdrop .white-card.about-section {
+  background: rgba(255, 255, 255, 0.75) !important;
+}

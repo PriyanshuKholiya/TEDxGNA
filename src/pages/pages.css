@@ -1,0 +1,36 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+.page.about,
+.page.speakers,
+.page.nomination,
+.page.rules {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  background: transparent;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0;
+}
+
+/* Remove any background from content containers */
+.page.about > div,
+.page.speakers > div,
+.page.nomination > div,
+.page.rules > div {
+  background: transparent !important;
+}
+
+/* Content should be above grid */
+.page > *:not(.grid-backdrop) {
+  position: relative;
+  z-index: 1;
+}

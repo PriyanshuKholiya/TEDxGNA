@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&family=Audiowide&display=swap');
+
+:root {
+  --neon-cyan: #00f0ff;
+  --neon-magenta: #ff00d0;
+  --neon-pink: #ff3fa6;
+  --bg-deep-1: #05040a;
+  --bg-deep-2: #070217;
+  --muted: #9bb0b9;
+  --brand-red: #e62b1e;
+  --surface: #0f1113;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(0,240,255,0.04), transparent 30%), linear-gradient(180deg, var(--bg-deep-1) 0%, var(--bg-deep-2) 100%);
+  color: #e6eef0;
+  font-family: 'Montserrat', 'Orbitron', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container,
+.app-container .page {
+  /* keep the light surface but allow the global grid to show through
+     by using a semi-transparent background */
+  background: rgba(250,249,247,0.92); /* subtle off-white with transparency */
+  color: #181818;
+}
+
+/* Rules page should have completely transparent background to show grid */
+.app-container .page.rules {
+  background: transparent !important;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  position: relative; /* stacking context for grid overlay */
+}
+
+.main-content {
+  flex: 1;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 2; /* ensure page content sits above the fixed grid */
+}
+
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: #faf9f7; /* ensure page background is the same off-white */
+}
+
+/* About page should start closer to navbar */
+.page.about {
+  padding-top: 0;
+  justify-content: flex-start;
+}
+
+/* Rules page should have transparent background to show grid */
+.page.rules {
+  background: transparent !important;
+}
+
+.page h1, .page h2, .page h3 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-family: 'Audiowide', 'Arial', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #181818;
+  text-align: center;
+}
+
+.page ul {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: unset;
+  padding-left: 2.2rem; /* ensure bullets align left and are consistent */
+}
+
+input,
+textarea {
+  background: #fff;
+  color: #181818;
+}
+
+/* Footer always dark, regardless of theme */
+.tedx-footer {
+  background: #111 !important;
+  color: #fff !important;
+  margin-top: auto;
+}
+
+.tedx-footer {
+  position: relative;
+  z-index: 3; /* ensure footer appears above grid */
+}
+
+.footer-logo,
+.footer-links h4,
+.footer-link,
+.footer-copy {
+  color: #fff !important;
+}
+
+.footer-link:hover {
+  color: #e62b1e !important;
+}
+
+.speakers-list {
+  /* Add a subtle background for the speakers section */
+  background: #f4f4f4;
+  border-radius: 18px;
+  padding: 2.5rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.app-container.light-theme .speakers-list {
+  background: #fff;
+}
+
+.speakers-list .speaker-card {
+  background: #fff;
+  color: #181818;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #0001;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid #ececec;
+}
+
+.speakers-list .speaker-card:hover {
+  box-shadow: 0 6px 24px #e62b1e22;
+  transform: translateY(-4px) scale(1.03);
+}
+
+.speakers-list .speaker-card h3 {
+  color: #e62b1e;
+  margin-bottom: 0.5rem;
+}
+
+.speakers-list .speaker-card div[style*="fontWeight:'bold'"] {
+  color: #555;
+}
+
+.speakers-list .speaker-card div[style*="fontSize:'0.95rem'"] {
+  color: #222;
+}
+
+.app-container.light-theme .speaker-card {
+  background: #fafafa;
+  color: #181818;
+  border: 1px solid #e0e0e0;
+}
+
+.app-container.light-theme .speaker-card h3 {
+  color: #e62b1e;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+.home-hero-bg {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    padding-bottom: 1rem;
+  }
+  .page {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    min-height: 50vh;
+  }
+  .page h1, .page h2, .page h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .speakers-list {
+    padding: 1.2rem 0.5rem;
+    gap: 1rem;
+  }
+  .speakers-list .speaker-card {
+    width: 95vw !important;
+    max-width: 320px;
+    padding: 1.2rem 0.7rem 1rem 0.7rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding-bottom: 0.5rem;
+  }
+  .page {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    min-height: 40vh;
+  }
+  .page h1, .page h2, .page h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+  .speakers-list {
+    padding: 0.7rem 0.2rem;
+    gap: 0.5rem;
+  }
+  .speakers-list .speaker-card {
+    width: 98vw !important;
+    max-width: 99vw;
+    padding: 0.7rem 0.2rem 0.7rem 0.2rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .main-content {
+    padding-bottom: 0.2rem;
+  }
+  .page {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    min-height: 30vh;
+  }
+  .page h1, .page h2, .page h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+  }
+  .speakers-list {
+    padding: 0.5rem 0.1rem;
+    gap: 0.3rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .speakers-list .speaker-card {
+    width: 99vw !important;
+    max-width: 99vw;
+    padding: 0.5rem 0.1rem 0.5rem 0.1rem !important;
+  }
+  .speakers-list .speaker-card img {
+    width: 60px !important;
+    height: 60px !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* Design tokens and modern UI helpers */
+/* keep existing tokens, extend with neon values */
+:root {
+  --brand-dark: #0e0e0e;
+  --shadow-sm: 0 2px 8px #0002;
+  --shadow-md: 0 6px 20px #00000022;
+  --shadow-lg: 0 10px 40px #00000033;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+}
+
+.highlight-red {
+  color: var(--brand-red) !important;
+  text-shadow: 0 2px 18px rgba(230, 43, 30, 0.3);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #eb0028 0%, #ff5e3a 100%);
+  color: #fff;
+  border: none;
+  font-family: 'Audiowide', 'Orbitron', 'Bebas Neue', 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border-radius: 2rem;
+  box-shadow: var(--shadow-md);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--brand-red);
+  border: 2px solid var(--brand-red);
+  font-weight: 700;
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  transition: background .18s, color .18s, transform .18s, box-shadow .18s;
+}
+.btn-outline:hover { 
+  background: var(--brand-red); 
+  color: #fff; 
+  transform: translateY(-2px); 
+  box-shadow: var(--shadow-md);
+}
+
+.kicker {
+  color: var(--brand-red);
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', 'Arial', sans-serif;
+  letter-spacing: 2px;
+  font-size: 2.4rem;
+  margin: 0.5rem 0 0.8rem 0;
+}
+
+.section-underline {
+  width: 120px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffb449 0%, #e62b1e 50%, #3a8dde 100%);
+  margin: 0.4rem auto 1.6rem auto;
+  box-shadow: 0 1px 6px #0002;
+}
+
+.chips {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin: 0.6rem 0 0.4rem 0;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+}
+
+.cta-banner {
+  width: 100%;
+  background: radial-gradient(1200px 600px at 10% -20%, rgba(230,43,30,.15), transparent 60%), linear-gradient(90deg, #111 0%, #1a1a1a 100%);
+  color: #fff;
+}
+.cta-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.2rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cta-banner .cta-text {
+  font-size: 1.35rem;
+  font-weight: 700;
+}

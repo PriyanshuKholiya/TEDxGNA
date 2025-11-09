@@ -1,0 +1,100 @@
+.grid-backdrop {
+  /* make the grid cover the entire viewport so it appears behind all pages */
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  /* use a CSS variable for opacity so JS can control visibility without changing element opacity */
+  background-image: 
+    linear-gradient(to right, rgba(230, 43, 30, var(--grid-opacity, 0.28)) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(230, 43, 30, var(--grid-opacity, 0.28)) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+/* Glow layer that follows the cursor. Kept as a ::before so it doesn't
+   interfere with layout or pointer-events; we toggle visibility by adding
+   the .glow-active class on the container (from JS). */
+.grid-backdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  /* radial gradient centered on the CSS vars set by JS */
+  background: radial-gradient(closest-side circle at var(--mx,50%) var(--my,50%), rgba(175, 26, 26, 0.8) 0%, rgba(255,28,28,0.14) 10%, transparent 26%);
+  opacity: 0;
+  transition: opacity 320ms ease;
+  mix-blend-mode: screen;
+}
+
+.grid-backdrop.glow-active::before { opacity: 1; }
+
+.grid-backdrop.simple {
+  /* When used as the "simple" backdrop inside a page wrapper, make the
+     grid absolutely positioned so it covers the wrapper only (not the
+     whole viewport). This allows the HOC to place the grid inside pages. */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  /* make the red a bit deeper/brighter */
+  background-image: 
+    linear-gradient(to right, rgba(255, 28, 28, var(--grid-opacity, 0.18)) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 28, 28, var(--grid-opacity, 0.18)) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.grid-backdrop .grid-pulse {
+  position: absolute;
+  width: var(--pw, 12px);
+  height: var(--ph, 24px);
+  background: rgba(255, 28, 28, 0.9);
+  opacity: 0;
+  transition: opacity 0.15s;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+/* Simple white grid variant used on non-hero pages */
+.grid-backdrop.simple.white-grid {
+  /* Draw red grid lines on a transparent background so the centered
+     content card can be opaque while the grid shows in the gutters */
+  background-color: transparent;
+  background-image: 
+    linear-gradient(to right, rgba(255,28,28,var(--grid-opacity, 0.22)) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,28,28,var(--grid-opacity, 0.22)) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.grid-backdrop.simple.white-grid .grid-pulse {
+  /* pulses should be red to match the grid lines */
+  background: rgba(230,43,30, 0.85);
+}
+
+.grid-backdrop .grid-pulse.pulse-vertical {
+  transform: rotate(90deg);
+}
+
+.grid-backdrop .grid-pulse.pulse-active {
+  animation: grid-pulse 0.8s ease-out forwards;
+}
+
+@keyframes grid-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(var(--rot, 0deg));
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2) rotate(var(--rot, 0deg));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) rotate(var(--rot, 0deg));
+  }
+}
