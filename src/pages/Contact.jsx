@@ -193,7 +193,7 @@ export default function Contact() {
                 <span style={{ fontWeight: 700, fontSize: "1.25rem", color: "#181818" }}>Address</span>
               </div>
               <div style={{ color: "#888", fontSize: "1.08rem", marginLeft: 0 }}>
-                GADVASU, Ludhiana, Punjab, India
+                GNA University, Ludhiana, Punjab, India
               </div>
             </div>
             <div style={{
