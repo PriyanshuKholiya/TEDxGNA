@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* <li><NavLink to="/contact">Contact</NavLink></li> */}
       </ul>
       <div className="nav-cta">
-        <button className="nav-register" onClick={() => navigate('/Registration')}>REGISTER NOW</button>
+        <button className="nav-register" onClick={() => navigate('/nomination')}>REGISTER NOW</button>
       </div>
       {/* Mobile menu overlay */}
       {mobileMenuOpen && (
