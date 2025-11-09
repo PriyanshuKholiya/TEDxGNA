@@ -11,7 +11,7 @@ export default function About() {
           {/* Watermark logo in the center, behind content */}
           <img
             src="image3.jpg"
-            alt="TEDxGADVASU Logo Watermark"
+            alt="TEDxGNA Logo Watermark"
             style={{
               position: "absolute",
               left: "50%",

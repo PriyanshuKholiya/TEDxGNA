@@ -76,7 +76,7 @@ export default function Footer() {
         }}>
           <img
             src="/Logo.png"
-            alt="TEDxGADVASU"
+            alt="TEDxGNA"
             style={{
               height: "2.5rem",
               width: "auto",

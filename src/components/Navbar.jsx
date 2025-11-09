@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="navbar-logo" style={{ height: "3.2rem", display: "flex", alignItems: "center" }}>
         <img
           src="/Logo.png"
-          alt="TEDxGADVASU"
+          alt="TEDxGNA"
           style={{
             height: "3.2rem",
             width: "auto",
@@ -60,7 +60,7 @@ export default function Navbar() {
             <div className="navbar-logo" style={{ height: "3.2rem", display: "flex", alignItems: "center" }}>
               <img
                 src="/Logo.png"
-                alt="TEDxGADVASU"
+                alt="TEDxGNA"
                 style={{
                   height: "3.2rem",
                   width: "auto",
