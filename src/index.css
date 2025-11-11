@@ -191,6 +191,62 @@ textarea {
   transition: opacity 0.8s, transform 0.8s;
 }
 
+.info-card {
+  /* Updated background to match the dark aesthetic of the example image */
+  background: #1a1a1a; 
+  color: #ffffff; /* Ensure text is bright white */
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4); /* Add a subtle shadow for depth */
+  border: 1px solid rgba(255,255,255,0.08); /* Light border for definition */
+  padding: 1.6rem 2rem;
+  border-radius: var(--radius-md);
+  max-width: 720px;
+  width: 100%;
+}
+
+.info-card h3 {
+  font-family: 'Audiowide', 'Staatliches', sans-serif;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.info-card p {
+  color: #ffffff; /* Explicitly set text color to bright white */
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Side labels next to the info rows — match the About header size and style */
+.info-side-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--brand-red);
+  font-family: 'Audiowide', 'Staatliches', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 2rem; /* match About TED / TEDx / TEDxGNA header */
+  padding: 0 1rem;
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* convenience helpers for placement */
+.info-side-label.left { left: 0; text-align: left; }
+.info-side-label.right { right: 0; text-align: right; }
+
+/* Responsive scaling so labels don't overflow on small screens */
+@media (max-width: 900px) {
+  .info-side-label { font-size: 1.4rem; padding: 0 0.75rem; }
+}
+@media (max-width: 500px) {
+  .info-side-label { font-size: 1.05rem; padding: 0 0.5rem; }
+}
+
 @media (max-width: 900px) {
   .main-content {
     padding-bottom: 1rem;
@@ -212,6 +268,9 @@ textarea {
     width: 95vw !important;
     max-width: 320px;
     padding: 1.2rem 0.7rem 1rem 0.7rem !important;
+  }
+  .info-card {
+    padding: 1.2rem 1rem;
   }
 }
 
@@ -236,6 +295,9 @@ textarea {
     width: 98vw !important;
     max-width: 99vw;
     padding: 0.7rem 0.2rem 0.7rem 0.2rem !important;
+  }
+  .info-card {
+    padding: 1rem 0.8rem;
   }
 }
 
@@ -270,6 +332,9 @@ textarea {
     aspect-ratio: 1 / 1 !important;
     object-fit: cover !important;
     border-radius: 8px !important;
+  }
+  .info-card {
+    padding: 0.8rem 0.6rem;
   }
 }
 
@@ -387,3 +452,4 @@ textarea {
   font-size: 1.35rem;
   font-weight: 700;
 }
+```http://googleusercontent.com/image_generation_content/0

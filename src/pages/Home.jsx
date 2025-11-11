@@ -72,7 +72,7 @@ export default function Home() {
 						background: '#000'
 					}}
 				>
-					<div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+					<div style={{ position: 'relative', width: '100vw', height: '88vh', overflow: 'hidden' }}>
 						{/* Use background particles for cyberpunk animated backdrop */}
 						<BackgroundParticles />
 						{/* Centered hero stage with headline overlay */}
@@ -91,17 +91,17 @@ export default function Home() {
 				</div>
 				{/* Add a spacer div to prevent layout jump when hero is fixed */}
 				{fixedHero && (
-					<div style={{ height: "92vh", width: "100%" }} />
+					<div style={{ height: "82vh", width: "100%" }} />
 				)}
 
 				<section className="event-section" style={{ background: '#000', color: '#fff', padding: '2rem 0 1.5rem 0', marginTop: '2rem', position: 'relative', zIndex: 10 }}>
-					<div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 1.5rem', display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+					<div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 1.5rem', display: 'flex', gap: '3rem', alignItems: 'center', flexWrap: 'wrap' }}>
 						{/* Left: smaller X image */}
-						<div style={{ flex: '0 0 260px', display: 'flex', justifyContent: 'center' }}>
+						<div style={{ flex: '0 0 260px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 							<img 
 								src="/X.png" 
 								alt="X symbol" 
-								style={{ width: '220px', maxWidth: '100%', height: 'auto', filter: 'drop-shadow(0 0 14px rgba(255,0,0,0.25))' }}
+								style={{ width: '240px', maxWidth: '100%', height: 'auto', filter: 'drop-shadow(0 0 14px rgba(255,0,0,0.25))' }}
 								onError={(e) => { e.target.style.display = 'none'; }}
 							/>
 						</div>
@@ -109,11 +109,15 @@ export default function Home() {
 						{/* Right: TEDxGNA University content */}
 						<div style={{ flex: '1 1 560px', minWidth: 0 }}>
 							<div style={{ marginBottom: '1rem' }}>
-								<h2 style={{ fontSize: '1.8rem', margin: 0, color: '#e62b1e', fontWeight: 900 }}>TEDxGNA <span style={{ color: '#fff', fontWeight: 700 }}>University</span></h2>
+								<h2 style={{ fontSize: '2rem', margin: 0, fontFamily: 'Helvetica, Arial, sans-serif', fontWeight: 800 }}>
+									<span style={{ color: '#e62b1e', fontWeight: 800 }}>TEDx</span>
+									<span style={{ color: '#fff', fontWeight: 700 }}>GNA</span>{' '}
+									<span style={{ color: '#fff', fontWeight: 700 }}>University</span>
+								</h2>
 								
 							</div>
 
-							<p style={{ fontSize: '1.02rem', color: '#dfeff1', marginBottom: '1.25rem', lineHeight: 1.5, opacity: 0.95 }}>TEDxGNA University brings TED Talks and live speakers together to inspire ideas and conversations. Our event creates a space for meaningful discussions and connections.</p>
+							<p style={{ fontSize: '1.02rem', color: '#dfeff1', marginBottom: '1rem', lineHeight: 1.5, opacity: 0.95 }}>TEDxGNA University brings TED Talks and live speakers together to inspire ideas and conversations. Our event creates a space for meaningful discussions and connections.</p>
 
 							{/* Info pills */}
 							<div className="event-pills">
@@ -122,10 +126,7 @@ export default function Home() {
 									<div className="pill-value">15 Nov, 2025</div>
 								</div>
 
-								<div className="event-pill">
-									<div className="pill-kicker">SPEAKERS</div>
-									<div className="pill-value">{speakers.length}</div>
-								</div>
+								
 
 								<div className="event-pill">
 									<div className="pill-kicker">LOCATION</div>
@@ -134,7 +135,7 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-					<div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
+					<div style={{ marginTop: '2.8rem', display: 'flex', justifyContent: 'center' }}>
 						{/* Countdown now targets midnight at the start of 15 Nov 2025 */}
 						<HeroCounter targetDate={new Date('2025-11-15T00:00:00')} />
 					</div>
@@ -143,39 +144,64 @@ export default function Home() {
 				{/* Combined info grid: What is TED / TEDx / TEDxGNA */}
 				<div style={{ width: "100%", padding: "3.5rem 0", background: "transparent" }}>
 					<div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 1rem" }}>
-						<h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '1rem', color: '#e62b1e', fontWeight: 800 }}>About TED / TEDx / TEDxGNA</h2>
-						<div className="info-grid">
-							<div className="info-card">
-								<h3>What is TED?</h3>
-								<p>
-									TED is a non-profit devoted to Ideas Worth Spreading. It began in 1984 as a small conference bringing together Technology, Entertainment and Design, and has since grown into a global platform for powerful ideas shared by speakers from all disciplines.
-								</p>
+						<h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '4rem', fontWeight: 800 }}>
+							<span style={{ color: '#e62b1e' }}>About TED</span>
+							<span style={{ color: '#e62b1e' }}> / </span>
+							<span style={{ color: '#e62b1e' }}>TEDx</span>
+							<span style={{ color: '#e62b1e' }}> / </span>
+							<span style={{ color: '#e62b1e' }}>TEDxGNA</span>
+						</h2>
+						{/* vertical stacked layout: each card appears one-by-one on the home page */}
+						<div>
+							{/* Row 1 — RIGHT aligned (card on right), label on LEFT */}
+							<div style={{ position: 'relative', marginBottom: '4rem', paddingLeft: '140px' }}>
+								{/* left-side red label */}
+								<div className="info-side-label left">
+									What is TED?
+								</div>
+								{/* card pushed to right */}
+								<div className="info-card" style={{ maxWidth: 720, width: '100%', marginLeft: 'auto' }}>
+							
+									<p>
+										TED is a non-profit organization dedicated to spreading powerful and inspiring ideas that can change the world. Founded in 1984 as a small conference that brought together visionaries from Technology, Entertainment, and Design, TED has since evolved into a global movement that transcends boundaries of discipline, culture, and geography. Through its renowned TED Talks, the organization provides a platform for thought leaders, innovators, and changemakers to share their insights, discoveries, and personal stories in engaging and accessible ways. Today, TED’s influence extends far beyond its annual conferences, with independently organized TEDx events, educational initiatives like TED-Ed, and a vast online library of talks that reach millions of people worldwide, promoting curiosity, creativity, and lifelong learning.
+									</p>
+								</div>
 							</div>
-							<div className="info-card">
-								<h3>What is TEDx?</h3>
-								<p>
-									TEDx is a grassroots initiative, created in the spirit of TED's overall mission to research and discover "ideas worth spreading." TEDx brings the spirit of TED to local communities around the globe through TEDx events. These events are organized by passionate individuals who seek to uncover new ideas and to share the latest research in their local areas that spark conversations in their communities. TEDx events include live speakers and recorded TED Talks, and are organized independently under a free license granted by TED. These events are not controlled by TED, but event organizers agree to abide by our format, and are offered guidelines for curation, speaker coaching, event organizing and more. They learn from us and from each other. More than 3000 events are now held annually.
-								</p>
+
+							{/* Row 2 — LEFT aligned (card on left), label on RIGHT */}
+							<div style={{ position: 'relative', marginBottom: '4rem', paddingRight: '140px' }}>
+								{/* right-side red label */}
+								<div className="info-side-label right">
+									What is TEDx?
+								</div>
+								{/* card pushed to left */}
+								<div className="info-card" style={{ maxWidth: 720, width: '100%', marginRight: 'auto' }}>
+									
+									<p>
+										TEDx is a grassroots initiative, created in the spirit of TED's overall mission to research and discover "ideas worth spreading." TEDx brings the spirit of TED to local communities around the globe through TEDx events. These events are organized by passionate individuals who seek to uncover new ideas and to share the latest research in their local areas that spark conversations in their communities. TEDx events include live speakers and recorded TED Talks, and are organized independently under a free license granted by TED. These events are not controlled by TED, but event organizers agree to abide by our format, and are offered guidelines for curation, speaker coaching, event organizing and more. They learn from us and from each other. More than 3000 events are now held annually.
+									</p>
+								</div>
 							</div>
-							<div className="info-card">
-								<h3>What is TEDxGNA?</h3>
-								<p>
-								TEDxGNA University is a platform created to ignite deep thinking and future-oriented conversations — and this year, the theme retroXfuturism stands at the heart of the event. retroXfuturism is a journey that invites us to pause, reflect, and draw wisdom from the past while fearlessly designing the world that's yet to come. It is about merging nostalgia with innovation, heritage with imagination, and timeless roots with futuristic possibilities.
-								</p>
+
+							{/* Row 3 — RIGHT aligned (card on right), label on LEFT */}
+							<div style={{ position: 'relative', paddingLeft: '170px' }}>
+								{/* left-side red label */}
+								<div className="info-side-label left" style={{ left: '-12px' }}>
+									What is TEDxGNA?
+								</div>
+								{/* card pushed to right */}
+								<div className="info-card" style={{ maxWidth: 720, width: '100%', marginLeft: 'auto' }}>
+									
+									<p>
+										TEDxGNA University is a vibrant platform designed to ignite deep thinking, creative exploration, and future-oriented conversations. This year’s theme, <strong>retroXfuturism</strong>, lies at the core of the event, inviting us to pause, reflect, and draw wisdom from the past while courageously shaping the world yet to come. It celebrates the fusion of nostalgia with innovation, heritage with imagination, and timeless roots with futuristic aspirations. retroXfuturism challenges the notion that the past and future exist separately; instead, it highlights how true progress emerges when yesterday’s wisdom inspires tomorrow’s creativity. Through this theme, TEDxGNA University encourages participants to explore how cultural heritage, traditional knowledge, and human values can coexist with cutting-edge technologies to create a future that is bold, conscious, and deeply human.
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				
-				{/* Divider above speakers */}
-				<div
-					className="slim-animated-divider"
-					style={{
-						width: "100%",
-						maxWidth: "900px",
-						margin: "2.5rem auto 0 auto"
-					}}
-				/>
+				{/* Removed animated divider on request */}
 			</div>
 		</>
 	);

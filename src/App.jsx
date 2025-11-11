@@ -8,14 +8,6 @@ import Rules from './pages/Rules';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import WithGridBackdrop from './components/WithGridBackdrop';
-
-// Create wrapped versions of pages that need the grid
-const AboutWithGrid = WithGridBackdrop(About);
-const SpeakersWithGrid = WithGridBackdrop(Speakers);
-const NominationWithGrid = WithGridBackdrop(Nomination);
-const RulesWithGrid = WithGridBackdrop(Rules);
-
 
 function App() {
   return (
@@ -24,10 +16,10 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutWithGrid />} />
-          <Route path="/speakers" element={<SpeakersWithGrid />} />
-          <Route path="/nomination" element={<NominationWithGrid />} />
-          <Route path="/rules" element={<RulesWithGrid />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/speakers" element={<Speakers />} />
+          <Route path="/nomination" element={<Nomination />} />
+          <Route path="/rules" element={<Rules />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>

@@ -170,20 +170,7 @@
   animation: hero-float 6s ease-in-out infinite, hero-pulse 3.6s ease-in-out infinite;
 }
 .hero-neon-frame {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(clamp(280px, 55vw, 980px) + 36px);
-  height: calc((clamp(280px, 55vw, 980px) / 3.2) + 36px);
-  max-width: 1040px;
-  border-radius: 16px;
-  z-index: 5;
-  pointer-events: none;
-  box-shadow: 0 0 48px rgba(0,240,255,0.06), 0 0 120px rgba(255,0,208,0.04) inset;
-  border: 2px solid rgba(0,240,255,0.06);
-  mix-blend-mode: screen;
-  animation: neon-rotate 8s linear infinite;
+  display: none; /* remove translucent frame behind the theme image */
 }
 
 @keyframes hero-float {
@@ -279,7 +266,7 @@
 }
 
 
-.grid-backdrop {
+.home-legacy .grid-backdrop {
   position: absolute;
   left: 0; top: 0; right: 0; bottom: 0;
   /* lift above the old pseudo-overlay so the grid is visible */
@@ -293,7 +280,7 @@
   --mx: 50%;
   --my: 50%;
 }
-.grid-backdrop::after {
+.home-legacy .grid-backdrop::after {
   /* glowing radial highlight that follows the cursor */
   content: '';
   position: absolute;
@@ -305,13 +292,13 @@
   transition: opacity 160ms ease, transform 220ms ease;
   z-index: 4;
 }
-.grid-backdrop.glow-active::after {
+.home-legacy .grid-backdrop.glow-active::after {
   opacity: 1;
   transform: scale(1.02);
 }
 
 /* subtle animated scanline for extra retro feeling */
-.grid-backdrop::before {
+.home-legacy .grid-backdrop::before {
   content: '';
   position: absolute;
   left: 0; top: 0; right: 0; bottom: 0;
@@ -327,7 +314,7 @@
 }
 
 /* Pulse elements: small glowing segments that appear on random grid intersections */
-.grid-pulse {
+.home-legacy .grid-pulse {
   position: absolute;
   width: var(--pw, 10px);
   height: var(--ph, 18px);
@@ -342,9 +329,9 @@
   transition: opacity 160ms ease, transform 440ms cubic-bezier(.2,.8,.2,1);
   z-index: 5;
 }
-.grid-pulse.pulse-vertical { transform-origin: center; }
-.grid-pulse:not(.pulse-vertical) { transform: translate(-50%, -50%) rotate(90deg); }
-.grid-pulse.pulse-active {
+.home-legacy .grid-pulse.pulse-vertical { transform-origin: center; }
+.home-legacy .grid-pulse:not(.pulse-vertical) { transform: translate(-50%, -50%) rotate(90deg); }
+.home-legacy .grid-pulse.pulse-active {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1.0);
   animation: pulse-pop 820ms cubic-bezier(.2,.9,.25,1);
@@ -360,10 +347,10 @@
 /* Event pills: inline on one row with pill styling */
 .event-pills {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center; /* center the date and location pills */
   margin-top: 0.6rem;
 }
 .event-pill {
@@ -375,7 +362,8 @@
   border: 1px solid rgba(255,255,255,0.06);
   padding: 0.9rem 1.6rem;
   border-radius: 999px;
-  min-width: 140px;
+  min-width: 220px; /* wider for visual balance */
+  flex: 0 1 280px;  /* make both pills similar width on large screens */
   text-align: center;
   color: #fff;
   box-shadow: 0 8px 36px rgba(0,0,0,0.45);
@@ -929,13 +917,22 @@ img.home-bg-img {
   }
 }
 
-/* Modern hero counter styles (red neon / glitch variant) */
+/* ============================================================
+Modern hero counter styles (GOLDEN THEME)
+============================================================
+*/
+
+:root {
+  --golden-color: #FFD700;
+  --golden-glow-rgba: 255, 215, 0; /* (255, 215, 0) is #FFD700 */
+}
+
 .hero-counter-modern {
   width: 100%;
   max-width: 920px;
   margin: 0 auto 2.5rem auto;
-  /* dark panel so the red glow reads well */
-  background: linear-gradient(180deg, rgba(8,6,8,0.95), rgba(14,6,6,0.92));
+  /* dark panel so the gold glow reads well */
+  background: linear-gradient(180deg, rgba(8,6,8,0.95), rgba(14, 12, 6, 0.92));
   border-radius: 16px;
   padding: 1.8rem 1.4rem;
   display: flex;
@@ -944,8 +941,8 @@ img.home-bg-img {
   position: relative;
   z-index: 10;
   color: #fff;
-  border: 1px solid rgba(230,43,30,0.18);
-  box-shadow: 0 18px 60px rgba(230,43,30,0.12), 0 0 60px rgba(230,43,30,0.06) inset;
+  border: 1px solid rgba(var(--golden-glow-rgba), 0.3);
+  box-shadow: 0 18px 60px rgba(var(--golden-glow-rgba), 0.1), 0 0 60px rgba(var(--golden-glow-rgba), 0.06) inset;
   /* subtle scanlines to help the retro feel */
   background-image: linear-gradient(transparent 92%, rgba(255,255,255,0.01) 92%);
 }
@@ -955,7 +952,7 @@ img.home-bg-img {
   left: -6px; right: -6px; top: -6px; bottom: -6px;
   z-index: -1;
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(230,43,30,0.18), 0 0 100px rgba(230,43,30,0.06);
+  box-shadow: 0 0 40px rgba(var(--golden-glow-rgba), 0.2), 0 0 100px rgba(var(--golden-glow-rgba), 0.08);
 }
 .hero-counter-modern-date {
   display: flex;
@@ -967,9 +964,17 @@ img.home-bg-img {
   gap: 0.6rem;
   letter-spacing: 0.4px;
 }
-.hero-counter-modern-icon { font-size: 1.85rem; }
+
+/* NEW: Style for the SVG icon */
+.hero-counter-modern-icon {
+  font-size: 1.85rem; /* for sizing */
+  fill: var(--golden-color); /* Golden fill color */
+  width: 1.2em; /* Adjust size relative to font-size */
+  height: 1.2em;
+}
+
 .hero-counter-modern-date-text {
-  color: rgba(255,255,255,0.95);
+  color: var(--golden-color);
   font-size: 1.05rem;
   font-weight: 800;
 }
@@ -984,7 +989,7 @@ img.home-bg-img {
   gap: 1.6rem;
   margin-bottom: 1rem;
   min-width: 320px;
-  border: 1px solid rgba(230,43,30,0.06);
+  border: 1px solid rgba(var(--golden-glow-rgba), 0.1);
 }
 .hero-counter-modern-item {
   display: flex;
@@ -995,11 +1000,11 @@ img.home-bg-img {
 .hero-counter-modern-number {
   font-size: 3rem;
   font-weight: 900;
-  color: #ff2b2b; /* vivid red */
+  color: var(--golden-color); /* vivid gold */
   line-height: 1;
   margin-bottom: 0.15rem;
   letter-spacing: 0.6px;
-  text-shadow: 0 6px 28px rgba(230,43,30,0.35), 0 0 12px rgba(255,60,60,0.18);
+  text-shadow: 0 6px 28px rgba(var(--golden-glow-rgba), 0.3), 0 0 12px rgba(var(--golden-glow-rgba), 0.15);
   font-family: 'Orbitron', 'Montserrat', sans-serif;
   transform-origin: center;
   animation: neon-flicker 3.6s infinite linear;
@@ -1013,25 +1018,25 @@ img.home-bg-img {
 .hero-counter-modern-colon {
   font-size: 2.4rem;
   font-weight: 900;
-  color: #ff3a3a;
+  color: var(--golden-color);
   margin: 0 0.4rem;
   line-height: 1;
   user-select: none;
-  text-shadow: 0 6px 20px rgba(230,43,30,0.28);
+  text-shadow: 0 6px 20px rgba(var(--golden-glow-rgba), 0.2);
 }
 .hero-counter-modern-save {
   font-size: 1.4rem;
   font-weight: 800;
-  color: rgba(255,255,255,0.95);
+  color: var(--golden-color);
   margin-top: 0.25rem;
   letter-spacing: 1px;
   text-align: center;
 }
 
-/* small flicker / glitch effect for the neon numbers */
+/* small flicker / glitch effect for the golden numbers */
 @keyframes neon-flicker {
-  0% { opacity: 1; filter: drop-shadow(0 10px 32px rgba(230,43,30,0.35)); transform: translateY(0); }
-  5% { opacity: 0.92; filter: drop-shadow(0 8px 26px rgba(230,43,30,0.28)); transform: translateY(-0.6px); }
+  0% { opacity: 1; filter: drop-shadow(0 10px 32px rgba(var(--golden-glow-rgba), 0.3)); transform: translateY(0); }
+  5% { opacity: 0.92; filter: drop-shadow(0 8px 26px rgba(var(--golden-glow-rgba), 0.25)); transform: translateY(-0.6px); }
   10% { opacity: 0.98; transform: translateY(0); }
   30% { opacity: 1; }
   45% { opacity: 0.9; transform: translateY(0.6px); }
@@ -1047,25 +1052,28 @@ img.home-bg-img {
   margin-top: 1.5rem;
 }
 .info-card {
-  background: #fff; /* white cards for light theme */
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 1.5rem;
-  border-radius: 12px;
-  color: #111;
-  box-shadow: 0 8px 40px rgba(16,22,28,0.06);
+  /* background: #fff; */ /* white cards for light theme */
+  /* Updated from previous step to be dark */
+  background: linear-gradient(180deg, #141414, #181818) !important;
+  border: 1px solid rgba(var(--golden-glow-rgba, 255,215,0), 0.18) !important;
+  padding: 1.8rem 2rem;
+  border-radius: 16px; /* softer, modern shape */
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 28px rgba(var(--golden-glow-rgba, 255,215,0), 0.06) inset !important;
   min-height: 160px;
+  max-width: 720px; /* standard content width for readability */
 }
 .info-card h3 {
   margin: 0 0 0.45rem 0;
-  color: #111;
+  color: #ffffff;
   font-size: 1.2rem;
   letter-spacing: 0.8px;
 }
 .info-card p {
   margin: 0;
-  color: #222;
-  line-height: 1.6;
-  font-size: 0.98rem;
+  color: #ffffff;
+  line-height: 1.7; /* improved readability */
+  font-size: 1.02rem; /* standardized paragraph size */
 }
 @media (max-width: 900px) {
   .info-grid {
@@ -1159,7 +1167,7 @@ img.home-bg-img {
 }
 
 /* Because we render 5x the items, moving by -20% equals one full set width,
-   creating a seamless loop without a visible jump. */
+    creating a seamless loop without a visible jump. */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-20%); }
@@ -1214,3 +1222,47 @@ img.home-bg-img {
   margin-top: 0.2rem !important;
 }
 
+/* Vertical stack for the "About TED / TEDx / TEDxGNA" section on Home */
+.info-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  max-width: 900px;
+  margin: 1.25rem auto 0 auto;
+  padding: 0 1rem;
+}
+.info-vertical .info-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Side labels next to the info rows — match the About header size and style */
+.info-side-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #FFD700 !important; /* golden labels */
+  font-family: 'Audiowide', 'Staatliches', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  padding: 0 1.25rem; /* add a touch more breathing room from card edge */
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+  text-shadow: 0 0 20px rgba(255,215,0, 0.18);
+}
+
+/* convenience helpers for placement */
+.info-side-label.left { left: 0; text-align: left; }
+.info-side-label.right { right: 0; text-align: right; }
+
+/* Responsive scaling so labels don't overflow on small screens */
+@media (max-width: 900px) {
+  .info-side-label { font-size: 1.4rem; padding: 0 0.75rem; }
+}
+@media (max-width: 500px) {
+  .info-side-label { font-size: 1.05rem; padding: 0 0.5rem; }
+}

@@ -67,11 +67,9 @@ export default function BackgroundParticles() {
       const py = Math.round((Math.random() * 20)) * 5;
       p.style.left = px + '%';
       p.style.top = py + '%';
-      // random size & orientation
-      const size = 6 + Math.round(Math.random() * 18);
-      p.style.setProperty('--pw', size + 'px');
-      p.style.setProperty('--ph', (8 + Math.round(Math.random() * 28)) + 'px');
-      if (Math.random() > 0.5) p.classList.add('pulse-vertical'); else p.classList.remove('pulse-vertical');
+      // random size for X symbol (slightly bigger)
+      const size = 20 + Math.round(Math.random() * 30);
+      p.style.setProperty('--ps', size + 'px');
 
       // re-trigger animation by removing/adding class
       p.classList.remove('pulse-active');
@@ -79,8 +77,8 @@ export default function BackgroundParticles() {
       // eslint-disable-next-line no-unused-expressions
       p.offsetWidth;
       p.classList.add('pulse-active');
-      // clear after animation
-      setTimeout(() => p.classList.remove('pulse-active'), 900 + Math.random() * 700);
+      // clear after animation (keep visible a bit longer)
+      setTimeout(() => p.classList.remove('pulse-active'), 2000 + Math.random() * 1200);
     };
 
     // interval driver that triggers random pulses
