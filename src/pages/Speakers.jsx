@@ -13,7 +13,7 @@ export default function Speakers() {
           <div className="speakers-grid">
             {speakers.map((sp, i) => (
               <SpeakerCard key={i} name={sp.name} img={sp.img} objectPosition={sp.objectPosition}>
-                <div className="speaker-card-title" style={{ color: '#e62b1e', fontWeight: 600, fontSize: '1.02rem' }}>{sp.title}</div>
+               <div className="speaker-card-title" style={{ color: '#eec55d', fontWeight: 600, fontSize: '0.9rem', whiteSpace: 'pre-line' }}>{sp.title}</div>
               </SpeakerCard>
             ))}
           </div>

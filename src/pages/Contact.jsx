@@ -208,7 +208,7 @@ export default function Contact() {
                 <span style={{ fontWeight: 700, fontSize: "1.25rem", color: "#181818" }}>Mail Us</span>
               </div>
               <div style={{ color: "#888", fontSize: "1.08rem", marginLeft: 0 }}>
-                placeholder text for now
+                placeholder text 
               </div>
             </div>
             <div style={{

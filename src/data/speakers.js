@@ -1,69 +1,82 @@
-// Speaker data with actual information and local image paths
-// Speakers listed in alphabetical order as requested
-
 const speakers = [
-  
+  {
+    name: "Arshdeep Kaur",
+    title: "Student - Bachelor of Commerce (Hons.), GNA University",
+    img: "/Speakers/ArshdeepKaur.png",
+    objectPosition: "center top"
+  },
   {
     name: "Atul Bhardwaj",
-    title: "Technical Assistant, Computer Shaheed Sukhdev College of Business Studies, University of Delhi",
     img: "/Speakers/AtulBhardwaj.png",
+    objectPosition: "top",
+    title: "Technical Assistant\nComputer Shaheed Sukhdev College of Business Studies, University of Delhi"
   },
   {
     name: "Beena Srivastava",
-    title: "CEO - Success4coaches",
     img: "/Speakers/BeenaSrivastava.png",
-   
+    objectPosition: "top",
+    title: "Founder\nSuccess4coaches"
   },
   {
     name: "Dr. Koushik Chatterjee",
-    title: "CEO – Xform Learning Pvt. Ltd.",
     img: "/Speakers/Dr.KoushikChatterjee.png",
+    objectPosition: "top",
+    title: "CEO\nxform Learning Pvt. Ltd."
+  },
+  {
+    name: "Dr. Mohammed Hussain Shaikh",
+    title: "Founder\nLandMaster's Advisory",
+    img: "/Speakers/Dr.MohammedHussainShaikh.png",
+    objectPosition: "center top"
   },
   {
     name: "Dr. Sheela Dubey",
-    title: "Associate Professor, Gargi College, University of Delhi",
     img: "/Speakers/Dr.SheelaDubey.png",
-    
+    objectPosition: "top",
+    title: "Associate Professor\nGargi College, University of Delhi"
   },
   {
     name: "Hemlata Rathi",
-    title: "Founder & Energy Intelligence Mentor, Quantum Heal",
     img: "/Speakers/HemlataRathi.png",
-   
+    objectPosition: "top",
+    title: "Founder & Energy Intelligence Mentor\nQuantum Heal"
   },
   {
     name: "Manjula Sularia",
-    title: "CEO - The Transformers Value Creators",
     img: "/Speakers/ManjulaSularia.png",
-    
+    objectPosition: "top",
+    title: "CEO\nThe Transformers Value Creators"
   },
   {
     name: "Pooja Agarwal Shaikh",
-    title: "Founder - The WiseOak",
     img: "/Speakers/PoojaAgarwalShaikh.png",
-    
+    objectPosition: "top",
+    title: "Founder\nThe WiseOak"
   },
   {
     name: "Rahul Sachar",
-    title: "Co-Founder & Director, PunjiBazaar Pvt. Ltd.",
     img: "/Speakers/RahulSachar.png",
-    
+    objectPosition: "top",
+    title: "Co-Founder & Director\nPunjjBaazar Pvt. Ltd."
   },
   {
     name: "Rashoo Sachdeva",
-    title: "Founder, 3Dimensional Leadership",
     img: "/Speakers/RashooSachdeva.png",
-    
-  },  
+    objectPosition: "top",
+    title: "Founder\n3Dimensional Leadership"
+  },
   {
     name: "Rayirth Mahajan",
-    title: "Student, St. Thomas School, Jagadhri",
     img: "/Speakers/RayirthMahajan.png",
-    
-  },  
-  
+    objectPosition: "top",
+    title: "Student\nSt. Thomas School, Jagadhri"
+  },
+  {
+    name: "Riya Sharma",
+    title: "Student - Bachelor of Business Administration, GNA University",
+    img: "/Speakers/RiyaSharma.png",
+    objectPosition: "center top"
+  }
 ];
 
 export default speakers;
-
-
