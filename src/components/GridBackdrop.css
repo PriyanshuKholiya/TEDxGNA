@@ -6,9 +6,8 @@
   height: 100vh;
   z-index: 0;
   /* use a CSS variable for opacity so JS can control visibility without changing element opacity */
-  background-image: 
-    linear-gradient(to right, rgba(230, 43, 30, var(--grid-opacity, 0.28)) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(230, 43, 30, var(--grid-opacity, 0.28)) 1px, transparent 1px);
+  /* Remove grid lines for hero; keep X pulses only */
+  background-image: none;
   background-size: 26px 26px;
   pointer-events: none;
   overflow: hidden;

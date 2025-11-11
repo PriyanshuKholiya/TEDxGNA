@@ -48,7 +48,7 @@ body {
 
 .main-content {
   flex: 1;
-  padding-bottom: 2rem;
+  padding-bottom: 0;
   position: relative;
   z-index: 2; /* ensure page content sits above the fixed grid */
 }
@@ -249,7 +249,7 @@ textarea {
 
 @media (max-width: 900px) {
   .main-content {
-    padding-bottom: 1rem;
+    padding-bottom: 0;
   }
   .page {
     padding-top: 1.2rem;
@@ -276,7 +276,7 @@ textarea {
 
 @media (max-width: 600px) {
   .main-content {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0;
   }
   .page {
     padding-top: 0.7rem;
@@ -303,7 +303,7 @@ textarea {
 
 @media (max-width: 500px) {
   .main-content {
-    padding-bottom: 0.2rem;
+    padding-bottom: 0;
   }
   .page {
     padding-top: 0.3rem;
@@ -452,4 +452,3 @@ textarea {
   font-size: 1.35rem;
   font-weight: 700;
 }
-```http://googleusercontent.com/image_generation_content/0

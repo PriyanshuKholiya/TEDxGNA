@@ -19,8 +19,8 @@
   gap: 2.5rem;
   /* No horizontal padding so one set = exactly 20% of total width */
   padding: 0.5rem 0;
-  /* Slowed to 40% of previous speed: 9s -> 22.5s */
-  animation: scroll-left 22.5s linear infinite;
+  /* Slow down marquee speed */
+  animation: scroll-left 30s linear infinite;
 }
 .carousel-track:hover {
   animation-play-state: paused !important;
@@ -236,13 +236,8 @@
 
 /* subtle retro scanlines / grid overlay */
 .home-hero-bg::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.02) 1px, transparent 1px);
-  background-size: 100% 3px, 3px 100%;
-  z-index: 1;
-  pointer-events: none;
+  /* remove hero grid overlay; keep only X pulses from BackgroundParticles */
+  content: none;
 }
 
 .home-hero-bg::after {
@@ -923,8 +918,8 @@ Modern hero counter styles (GOLDEN THEME)
 */
 
 :root {
-  --golden-color: #FFD700;
-  --golden-glow-rgba: 255, 215, 0; /* (255, 215, 0) is #FFD700 */
+  --golden-color: #eec55d;
+  --golden-glow-rgba: 238, 197, 93; /* (238, 197, 93) is #eec55d */
 }
 
 .hero-counter-modern {
@@ -1055,11 +1050,11 @@ Modern hero counter styles (GOLDEN THEME)
   /* background: #fff; */ /* white cards for light theme */
   /* Updated from previous step to be dark */
   background: linear-gradient(180deg, #141414, #181818) !important;
-  border: 1px solid rgba(var(--golden-glow-rgba, 255,215,0), 0.18) !important;
+  border: 1px solid rgba(var(--golden-glow-rgba, 238,197,93), 0.18) !important;
   padding: 1.8rem 2rem;
   border-radius: 16px; /* softer, modern shape */
   color: #ffffff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 28px rgba(var(--golden-glow-rgba, 255,215,0), 0.06) inset !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 28px rgba(var(--golden-glow-rgba, 238,197,93), 0.06) inset !important;
   min-height: 160px;
   max-width: 720px; /* standard content width for readability */
 }
@@ -1242,7 +1237,7 @@ Modern hero counter styles (GOLDEN THEME)
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #FFD700 !important; /* golden labels */
+  color: #eec55d !important; /* golden labels */
   font-family: 'Audiowide', 'Staatliches', sans-serif;
   font-weight: 800;
   text-transform: uppercase;

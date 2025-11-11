@@ -14,7 +14,7 @@ export default function Nomination() {
           <button
             className="btn-primary"
             style={{ marginTop: '1.2rem' }}
-            onClick={() => { window.scrollTo({ top: 99999, behavior: 'smooth' }); }}
+            onClick={() => { window.open('https://forms.gle/oHuz7KVxdGFrM6Ai8', '_blank', 'noopener'); }}
           >
             Nominate Now
           </button>

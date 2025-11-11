@@ -72,13 +72,13 @@ export default function Footer() {
           minWidth: 160,
           margin: 0,
           width: "100%",
-          height: "2.5rem"
+          height: "3.2rem"
         }}>
           <img
             src="/Logo.png"
             alt="TEDxGNA"
             style={{
-              height: "2.5rem",
+              height: "3.2rem",
               width: "auto",
               display: "block",
               objectFit: "contain"

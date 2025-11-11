@@ -48,10 +48,7 @@ export default function Home() {
 		return Array.from({ length: 5 }, () => speakers).flat();
 	}, []);
 
-	const handleTellMeMore = () => {
-		const section = document.getElementById("theme-section");
-		if (section) section.scrollIntoView({ behavior: "smooth" });
-	};
+	// no-op placeholder removed (tell me more)
 
 	return (
 		<>
@@ -202,6 +199,31 @@ export default function Home() {
 				</div>
 				
 				{/* Removed animated divider on request */}
+				{/* Explore Speakers: horizontally moving bar at page end */}
+				<section style={{ background: '#000', color: '#fff', padding: '1rem 0 3rem 0', margin: 0 }}>
+					<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1rem' }}>
+						<h2 style={{ textAlign: 'center', fontSize: '2rem', margin: '0 0 1rem 0', fontWeight: 800 }}>
+							<span style={{ color: '#e62b1e' }}>Meet Our Speakers</span>
+						</h2>
+					</div>
+					<div className="carousel-container explore-speakers-bar" role="region" aria-label="Scrolling list of speakers">
+						<div className="carousel-track" ref={carouselTrackRef}>
+							{repeatedSpeakers.map((sp, i) => (
+								<div className="carousel-card" key={`${sp.name}-${i}`} role="button" tabIndex={0} aria-label={`View ${sp.name}`}>
+									<img src={sp.img} alt={sp.name} />
+									<div className="carousel-overlay">
+										<span>{sp.name}</span>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+					<div style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+						<button className="modern-btn" onClick={() => navigate('/speakers')}>
+							View all speakers
+						</button>
+					</div>
+				</section>
 			</div>
 		</>
 	);
