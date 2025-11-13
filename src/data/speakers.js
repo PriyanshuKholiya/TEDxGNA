@@ -24,6 +24,12 @@ const speakers = [
     title: "CEO\nxform Learning Pvt. Ltd."
   },
   {
+    name: "KV Premraj",
+    img: "/Speakers/KVPremraj.png",
+    objectPosition: "top",
+    title: "Ex Banker and Author"
+  },
+  {
     name: "Dr. Mohammed Hussain Shaikh",
     title: "Founder\nLandMaster's Advisory",
     img: "/Speakers/Dr.MohammedHussainShaikh.png",
@@ -77,6 +83,7 @@ const speakers = [
     img: "/Speakers/RiyaSharma.png",
     objectPosition: "center top"
   }
+  
 ];
 
 export default speakers;
